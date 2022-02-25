@@ -155,7 +155,7 @@ class SmoothPinCodeInput extends Component {
         }}>
           {
             Array.apply(null, Array(codeLength)).map((_, idx) => {
-              const cellFocused = focused && idx === value.length;
+              const cellFocused = focused && (idx ==value.length-1 || (idx ==0 && value.length ==0)) ;
               const filled = idx < value.length;
               const last = (idx === value.length - 1);
               const showMask = filled && (password && (!maskDelay || !last));
@@ -195,7 +195,7 @@ class SmoothPinCodeInput extends Component {
                     cellFocused ? cellStyleFocused : {},
                     filled ? cellStyleFilled : {},
                   ]}
-                  animation={idx === value.length && focused && animated ? animationFocused : null}
+                  animation={(idx ==value.length-1 || (idx ==0 && value.length ==0)) && focused && animated ? animationFocused : null}
                   iterationCount="infinite"
                   duration={500}
                 >
